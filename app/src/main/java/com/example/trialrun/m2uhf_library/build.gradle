@@ -1,0 +1,4 @@
+package com.example.trialrun.m2uhf_library
+
+configurations.maybeCreate("default")
+artifacts.add("default", file('m2uhf-rfid_1.17-c217e988.aar'))
