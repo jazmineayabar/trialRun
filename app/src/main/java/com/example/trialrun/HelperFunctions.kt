@@ -16,7 +16,7 @@ class HelperFunctions {
                 message
             }
         )
-        alertDialogBuilder.setTitle("An error occurred!")
+        alertDialogBuilder.setTitle("An error occurred!!")
         alertDialogBuilder.setNegativeButton("Ok") { dialog, _ -> dialog.dismiss() }
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
