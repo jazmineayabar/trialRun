@@ -3,7 +3,6 @@ package com.example.trialrun
 import android.os.Bundle
 //import androidx.activity.ComponentActivity
 
-import android.os.Handler
 import android.text.InputFilter
 import android.text.InputFilter.AllCaps
 import android.util.Log
@@ -11,12 +10,10 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-//import de.acdgruppe.m2uhf_library.Enums.MemBank
-//import de.acdgruppe.m2uhf_library.Ipj_Error
-//import de.acdgruppe.m2uhf_library.JNIAdvancedReporter
-//import de.acdgruppe.m2uhf_library.JNIReporter
+import de.acdgruppe.m2uhf_library.Enums
+
+import de.acdgruppe.m2uhf_library.Ipj_Error
 
 
 class WriteActivity : AppCompatActivity() {
@@ -61,35 +58,34 @@ class WriteActivity : AppCompatActivity() {
                 }
 
                 // the memory bank can be defined here, as an example EPC is used
-                //val memBank = MemBank.EPC
+                val memBank = Enums.MemBank.EPC
 
                 // the index where the data is written to can be defined here, as an example 2 is used
                 val index = 2
 
                 // run the library call in a new thread to avoid blocking the main thread
-                //val runnable = Runnable {
-                    //val res = AppContext.Get().m2uhfLib.writeTag(
-                       // hexArrToFind,
-                        //false,
-                       // hexArr,
-                       // memBank,
-                      //  index,
-                      //  0
-                   // )
+                val runnable = Runnable {
+                   val res = AppContext2.Get().m2uhfLib.writeTag(
+                        hexArrToFind,
+                        false,
+                       hexArr,
+                        memBank,
+                        index,
+                        0
+                    )
                     // the result just tells if the write function was started correctly,
                     // a tagOperationReport is sent via the JNIAdvancedReporter if the write was completed
-                   // Log.d(AppContext.TAG, "writeTagResult $res")
+                    Log.d(AppContext2.TAG, "writeTagResult $res")
                 }
-               // Thread(runnable).start()
-           // } else {
-               // HelperFunctions().showErrorDialog(
-                    //context,
-                    //"Invalid input data",
-                  //  Ipj_Error.GENERAL_ERROR
-               // )
-         //   }
-       // })
+               Thread(runnable).start()
+            } else {
+                HelperFunctions().showErrorDialog(
+                    context,
+                    "Invalid input data",
+                    Ipj_Error.GENERAL_ERROR
+                )
+            }
+        })
 
-    })
     }
 }

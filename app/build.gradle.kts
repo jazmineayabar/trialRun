@@ -50,7 +50,7 @@ android {
 }
 
 dependencies {
-
+    implementation(files("../m2uhf_library/m2uhf-rfid_1.17-c217e988.aar"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -63,6 +63,11 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.recyclerview)
     implementation(libs.material)
+    implementation(fileTree(mapOf(
+        "dir" to "C:\\Users\\ayaba\\Downloads\\m2uhf_library",
+        "include" to listOf("*.aar", "*.jar"),
+        //"exclude" to listOf()
+    )))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -70,4 +75,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
 }
