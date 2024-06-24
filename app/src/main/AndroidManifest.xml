@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ReadActivity"
+            android:name=".ScanActivity"
             android:theme="@style/Theme.AppCompat.Light"
             />
         <activity
